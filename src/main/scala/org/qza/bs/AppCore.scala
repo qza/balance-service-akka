@@ -4,19 +4,14 @@ import akka.actor.ActorSystem
 
 trait Core {
 
-  protected implicit def system: ActorSystem
+  protected implicit def actorSystem: ActorSystem
 
 }
 
 trait AppCore extends Core with AppConfig {
 
-  val appName  = config.getString("app.name")
+  def actorSystem: ActorSystem = ActorSystem("balance-actor-system")
 
-  val httpPort = config.getString("http.port")
-  val httpHost = config.getString("http.host")
-
-  def system: ActorSystem = ActorSystem("balance-actor-system")
-
-  sys.addShutdownHook(system.shutdown())
+  sys.addShutdownHook(actorSystem.shutdown())
 
 }

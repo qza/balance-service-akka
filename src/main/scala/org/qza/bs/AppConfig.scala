@@ -13,7 +13,7 @@ trait AppConfig {
 
 object AppConfig extends StrictLogging {
 
-  logger.info("loading configuration ...")
+  logger.info("loading configuration")
 
   val configPath = System.getProperty("config", "src/main/resources/application.conf")
 
