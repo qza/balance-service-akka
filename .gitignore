@@ -1,0 +1,24 @@
+# Simple Build Tool
+
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+
+.history
+.cache
+*.class
+*.log
+.lib/
+dist/*
+
+# IDE specific
+
+.scala_dependencies
+.worksheet
+/.idea
+/.idea_modules
+/.classpath
+/.project
+/.settings
