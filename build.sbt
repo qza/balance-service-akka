@@ -1,27 +1,24 @@
-name          := "balance-service-akka"
-organization  := "qza"
-description   := "simple balance service with akka"
-version       := "1.0"
+name := "balance-service-akka"
+organization := "qza"
+description := "simple balance service with akka"
+version := "1.0"
 
-scalaVersion  := "2.11.7"
+scalaVersion := "2.11.7"
 scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
 
 
-resolvers     += "Typesafe Releases" at "http://repo.typesafe.com/typesafe/releases/"
+resolvers += "Typesafe Releases" at "http://repo.typesafe.com/typesafe/releases/"
 
 libraryDependencies ++= {
 
-  val akkaVersion       = "2.3.12"
-  val akkaHttpVersion   = "2.0-M2"
-
   Seq(
-    "com.typesafe.akka"           %% "akka-actor"                        % akkaVersion,
-    "com.typesafe.akka"           %% "akka-http-experimental"            % akkaHttpVersion,
-    "com.typesafe.scala-logging"  %% "scala-logging"                     % "3.1.0",
-    "org.scalatest"               %% "scalatest"                         % "2.2.4"                 % "test",
-    "ch.qos.logback"               % "logback-classic"                   % "1.1.3"
+    "com.typesafe.akka" %% "akka-http-experimental" % "2.0-M2",
+    "com.typesafe.scala-logging" %% "scala-logging" % "3.1.0" exclude("org.scala-lang", "scala-reflect"),
+    "org.scalatest" %% "scalatest" % "2.2.4" % "test" exclude("org.scala-lang", "scala-reflect"),
+    "org.scala-lang.modules" % "scala-xml_2.11" % "1.0.4",
+    "ch.qos.logback" % "logback-classic" % "1.1.3"
   )
 
 }
 
-exportJars    := true
+exportJars := true
