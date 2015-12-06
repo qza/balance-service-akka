@@ -1,9 +1,11 @@
 package org.qza.bs
 
+import scala.io.Source
+import scala.concurrent.ExecutionContext
+
 import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
 import com.typesafe.scalalogging.StrictLogging
-import scala.concurrent.ExecutionContext
 
 trait AppBoot extends AppCore with AppRoutes with StrictLogging {
 
@@ -12,6 +14,7 @@ trait AppBoot extends AppCore with AppRoutes with StrictLogging {
   implicit val materializer = ActorMaterializer()
 
   val appName = config.getString("app.name")
+  val appBanner = config.getString("app.banner")
   val httpPort = config.getInt("http.port")
   val httpHost = config.getString("http.host")
 
@@ -20,15 +23,5 @@ trait AppBoot extends AppCore with AppRoutes with StrictLogging {
   val bindingFuture = Http().bindAndHandle(
     handler = routes, interface = httpHost, port = httpPort
   )
-
-  bindingFuture onSuccess {
-    case _ =>
-      logger.info(s"server up and running on $httpHost:$httpPort")
-  }
-
-  bindingFuture onFailure {
-    case ex: Exception =>
-      logger.error(s"server bind to $httpHost:$httpPort failed", ex)
-  }
 
 }

@@ -1,7 +1,5 @@
 package org.qza.bs
 
-import akka.actor.ActorSystem
-import akka.stream.ActorMaterializer
 import akka.http.scaladsl.model._
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 
@@ -11,15 +9,12 @@ import org.qza.bs.health.HealthResponse
 
 class AppRoutesSpec extends WordSpec with Matchers with ScalatestRouteTest with AppRoutes {
 
-  implicit val actorSystem = ActorSystem("balance-test-system")
-  implicit val actorMaterializer = ActorMaterializer()
-
   "The app" should {
 
     "return index.html on a GET to /" in {
       Get() ~> routes ~> check {
         status.isSuccess() shouldEqual true
-        responseAs[String] should include regex ("balance service")
+        responseAs[String] should include regex "balance service"
       }
     }
 
