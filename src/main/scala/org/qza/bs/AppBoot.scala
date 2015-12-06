@@ -1,7 +1,6 @@
 package org.qza.bs
 
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.server.Directives._
 import akka.stream.ActorMaterializer
 import com.typesafe.scalalogging.StrictLogging
 import scala.concurrent.ExecutionContext
