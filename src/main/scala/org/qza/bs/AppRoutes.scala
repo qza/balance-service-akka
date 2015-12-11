@@ -14,18 +14,19 @@ trait AppRoutes extends BalanceRoutes with HealthRoutes {
   implicit val system: ActorSystem
   implicit val materializer: ActorMaterializer
 
-  val webRoutes = logRequestResult("balance-service-web", InfoLevel) {
+  val webRoutes = {
     path("") {
       get {
         getFromResource("public/index.html")
       }
-    } ~ path("favicon.ico") {
-      get {
-        complete(StatusCodes.NotFound)
+    } ~
+      path("favicon.ico") {
+        get {
+          complete(StatusCodes.NotFound)
+        }
       }
-    }
   }
 
-  val routes = webRoutes ~ balanceRoutes ~ healthRoutes
+  val routes = webRoutes ~ balanceRoutes ~ balanceExternalRoutes ~ healthRoutes
 
 }
