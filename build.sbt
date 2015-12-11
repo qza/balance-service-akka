@@ -4,7 +4,7 @@ description := "simple balance service with akka"
 version := "1.0"
 
 scalaVersion := "2.11.7"
-scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
+scalacOptions := Seq("-unchecked", "-deprecation", "-feature", "-encoding", "utf8")
 
 resolvers += "Typesafe Releases" at "http://repo.typesafe.com/typesafe/releases/"
 

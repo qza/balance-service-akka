@@ -1,10 +1,10 @@
 package org.qza.bs
 
-import scala.io.Source
-import scala.concurrent.ExecutionContext
-
 import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
+
+import scala.concurrent.ExecutionContext
+
 import com.typesafe.scalalogging.StrictLogging
 
 trait AppBoot extends AppCore with AppRoutes with StrictLogging {
@@ -15,8 +15,6 @@ trait AppBoot extends AppCore with AppRoutes with StrictLogging {
 
   val appName = config.getString("app.name")
   val appBanner = config.getString("app.banner")
-  val httpPort = config.getInt("http.port")
-  val httpHost = config.getString("http.host")
 
   logger.info(s"starting application $appName")
 

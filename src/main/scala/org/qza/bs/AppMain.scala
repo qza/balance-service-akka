@@ -20,6 +20,7 @@ object AppMain extends App with AppBoot {
   bindingFuture onFailure {
     case ex: Exception =>
       logger.error(s"server bind to $httpHost:$httpPort failed", ex)
+      system.shutdown()
   }
 
 }
