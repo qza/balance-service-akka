@@ -4,8 +4,9 @@ import akka.http.scaladsl.model._
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 
 import org.scalatest.{Matchers, WordSpec}
-import org.qza.bs.balance.BalanceResponse
+
 import org.qza.bs.health.HealthResponse
+import org.qza.bs.balance.BalanceModel._
 
 class AppRoutesSpec extends WordSpec with Matchers with ScalatestRouteTest with AppRoutes {
 
