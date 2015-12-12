@@ -7,6 +7,8 @@ import akka.http.scaladsl.model.StatusCodes._
 import org.qza.bs.AppCore
 import org.qza.bs.balance.BalanceModel._
 
+import spray.json._
+
 trait BalanceRoutes extends AppCore with BalanceData with BalanceJsonProtocol {
 
   val service = actorSystem.actorOf(Props[BalanceService], "service-actor")
@@ -38,7 +40,7 @@ trait BalanceRoutes extends AppCore with BalanceData with BalanceJsonProtocol {
       post {
         decodeRequest {
           entity(as[BalanceTotalResponse]) { totalResponse =>
-            logger.info("received balance total callback: " + totalResponse)
+            logger.info("received balance total callback: " + totalResponse.toJson.compactPrint)
             complete(OK)
           }
         }
